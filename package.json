@@ -40,7 +40,11 @@
     "start": "pnpm packages:build && concurrently -n server,client \"pnpm -C server start\" \"pnpm -C client start\"",
     "dev": "pnpm packages:build && concurrently -n server,client,packages \"pnpm -C server start\" \"pnpm -C client start\" \"pnpm -r --parallel --filter @4gaboards/* dev\"",
     "pretest": "pnpm packages:build",
-    "test": "pnpm -C server test && pnpm -C client test"
+    "test": "pnpm -C server test && pnpm -C client test",
+    "e2e:test": "playwright test",
+    "e2e:cleanup": "node tests/e2e/cleanup-e2e-data.js",
+    "e2e:ui": "playwright test --ui",
+    "e2e:install": "playwright install chromium"
   },
   "lint-staged": {
     "client/**/*.{js,jsx}": [
@@ -61,20 +65,21 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.28.6",
+    "@playwright/test": "^1.57.0",
     "concurrently": "^9.2.1",
     "confusing-browser-globals": "^1.0.11",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-perfectionist": "^5.9.0",
+    "eslint-plugin-perfectionist": "^5.8.0",
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "lint-staged": "^17.0.2",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "lint-staged": "^16.4.0",
     "postcss-scss": "^4.0.9",
-    "prettier": "^3.8.3",
-    "stylelint": "^17.11.0",
+    "prettier": "^3.8.2",
+    "stylelint": "^17.8.0",
     "stylelint-config-recommended-scss": "^17.0.1"
   },
   "devEngines": {
