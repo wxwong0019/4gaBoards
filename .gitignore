@@ -1,6 +1,8 @@
 node_modules
 docker-compose.override.yml
 test_docker
+playwright-report
+test-results
 
 .idea
 .DS_Store
